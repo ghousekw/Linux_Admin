@@ -1,0 +1,54 @@
+How to compare the contents of file:
+
+diff file1 file2    -   Compare two files.
+sdiff file1 file2   -   Side-by-side comparision.
+vimdiff file1 file2 -   Highlight differences in vim.
+
+diff output:
+------------
+$ diff file1 file2
+3c3 
+...
+
+LineNumFile1-Action-LineNumFile2
+Action = (A)dd(C)hange(D)elete
+
+Sample: $ diff file1 file2
+
+        1c1
+        < This is a file from file1
+        ---
+        > This is a file from file2
+
+            . < Line from file1
+            . > Line from file2
+
+Sample: $ sdiff file1 file2
+
+        This is a file from file1	    |	This is a file from file2
+							            >	This is a extra line for file2
+
+        . | Differing lines
+        . < Line from file1
+        . > Line from file2
+
+vimdiff:
+--------
+ctrl+w w -  Goto next window
+:q     - Quit(close current window)
+:qa    - Quit all(close both files)
+:qa!   - Force quit all
+
+cat -n file1.txt
+Here 'n' display the file with line numbers.
+
+echo new line for file1 >> files.txt
+    adding a new line to files.txt file.
+
+Sample: sdiff file1.txt file2.txt
+    tags: credentials						tags: credentials
+    site: facebook.com						site: facebook.com
+    user: jason							    user: jason
+    pass: Abee!						      |	pass: bee!
+    tags: credentialsnew last line		/	tags: credentials
+
