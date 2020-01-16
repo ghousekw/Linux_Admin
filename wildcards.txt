@@ -1,0 +1,51 @@
+Wildcards:
+    - A character or string used for pattern matching.
+    - Globbing expands the Wildcards pattern into a list of files and/or directories.(paths)
+    - Wildcards can be used with most commands.
+        . ls
+        . rm 
+        . cp
+    * - Matches zero or more characters
+        . *.txt
+        . a*
+        . a*.txt
+    ? - Matches exactly one character
+        . ?.txt
+        . a?
+        . a?.txt
+    [] - A character class
+        . Matches any of the characters included between the brackets. Matches exactly one character.
+        . [aeiou]
+        . ca[nt]*
+            - can
+            - cat
+            - candy 
+            - catch 
+    [!] - Matches any of the characters NOT included between the brackets. Matches exactly one character.
+        . [!aeiou]*
+            - baseball
+            - cricket
+    Ranges:
+        - use two characters seperated by hyphen to create a range of character class.
+            . [a-g]*
+                - Matches all files started with a, b, c, d, e, f, g.
+            . [3-6]*
+                - Matches all files started with 3, 4, 5, 6.
+    Predefined Named characters classes:
+        . [[:alpha:]]
+            - Matches all upper and lower case characters.
+        . [[:alnum:]]
+            - Matches all upper and lower case letters or any decimal digits.
+        . [[:digit:]]
+            - Represents digits from 0 to 9.
+        . [[:lower:]]
+            - Matches any lower case letters.
+        . [[:space:]]
+            - Matches any space characters like tab, newline, space and so.
+        . [[:upper:]]
+            - Matches only lower case letters.
+    Matching Wildcards pattern:
+        . \ - escape character. Use if you want to match a wildcard character.
+            . Matches all files that end with a question mark:
+                . *\?
+                    - done?
