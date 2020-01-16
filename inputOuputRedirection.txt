@@ -1,0 +1,49 @@
+Input/Output types:
+-------------------
+   I/O Name         Abbrevation     File Descriptor
+Standard Input      stdin           0
+Standard Output     stdout          1
+Standard Error      stderr          2
+
+Redirection:
+------------
+>   Redirects standard output to a file.
+    Overwrites(truncating) existing contents.
+
+>>  Redirects standard output to a file.
+    Appends to an existing contents.
+
+<   Redirects input from a file to a command.
+
+&   Used with redirection to signal that a file descriptor is being used.
+
+2>&1 Combine stderr and standard output.
+
+2>file Redirects standard error to a file.
+
+The Null Device:
+----------------
+>   /dev/null Redirects output to a nowhere.
+
+$ ls here not-here 2> /dev/null here
+$ ls here not-here > /dev/null 2>&1
+
+Examples:
+---------
+sample: Redirecting standard output to a files.txt
+    ls -l > files.txt   or   ls -l 1>files.txt
+    cat files.txt
+    ****file contents
+sample: Appending standard output to a files.txt
+    ls >> files.txt
+    cat files.txt or less files.txt
+    ****file contents
+sample: Redirecting standard input and perform sorting to a files.txt
+    sort < files.txt    or  sort files.txt
+sample: sorting files.txt and Redirecting to sorted_files.txt
+    sort < files.txt > sorted_files.txt
+sample: Redirecting files.txt to standard error and standard output in out.both
+    ls files.txt not-here > out.both 2>&1
+sample: Redirecting files.txt to standard ouput and standard error to /dev/null
+    ls files.txt not-here >/dev/null 2>&1
+
