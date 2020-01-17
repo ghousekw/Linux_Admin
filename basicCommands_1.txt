@@ -1,0 +1,175 @@
+To check the present working directory:
+---------------------------------------
+[gmshaik@localhost Linux_Admin]$ pwd
+    /home/gmshaik/Desktop/Linux_Admin
+
+To see the contents of a directory(folder):
+-------------------------------------------
+Syntax: 
+[gmshaik@localhost Linux_Admin]$ ls
+
+Options:
+-l  Long list including attributes.
+-a  All files and directories including hidden.
+-d  To check for a particular file or directory.
+-R  Recursively, to see the contents in a tree structure.
+
+
+    To see the contents of the present working directory:
+    -----------------------------------------------------
+    [gmshaik@localhost Linux_Admin]$ ls
+        basicCommands_1.txt  
+        customizingShellPrompt.txt  
+        inputOuputRedirection.txt  
+        searchingFilesAndUsingPipes.txt  
+    
+To see the list of files and directories along with their attributes(properties):
+---------------------------------------------------------------------------------
+[gmshaik@localhost Linux_Admin]$ ls -l
+    total 36
+    -rw-rw-r--. 1 gmshaik gmshaik    0 Jan 17 22:32 basicCommands_1.txt
+    -rw-rw-r--. 1 gmshaik gmshaik 1276 Jan 17 22:20 comparingFiles.txt
+    -rw-rw-r--. 1 gmshaik gmshaik 1180 Jan 17 22:20 customizingShellPrompt.txt
+    -rw-rw-r--. 1 gmshaik gmshaik 4282 Jan 17 22:20 environmentVariables.txt
+    -rw-rw-r--. 1 gmshaik gmshaik 1850 Jan 17 22:20 wildcards.txt
+
+To see all files and directories including hidden files and directories:
+------------------------------------------------------------------------
+[gmshaik@localhost Linux_Admin]$ ls -a
+    .
+    ..
+    basicCommands_1.txt
+    comparingFiles.txt
+    customizingShellPrompt.txt
+    environmentVariables.txt
+
+To check if a particular file or directory is present:
+------------------------------------------------------
+[gmshaik@localhost Linux_Admin]$ ls -d Desktop
+Desktop
+
+Creating files and adding data using cat command:
+-------------------------------------------------
+Syntax: cat <option><argument>
+
+    To create a file along with some data:
+    --------------------------------------
+    [gmshaik@localhost ~]$ cat > salesreport
+    This file contains the sales report for the month of may.
+        press ctrl+d to save
+
+    To read the contents of a file:
+    -------------------------------
+    [gmshaik@localhost ~]$ cat salesreport 
+    This file contains the sales report for the month of may.
+
+    To append(add) to a file:
+    -------------------------
+    [gmshaik@localhost ~]$ cat >> salesreport 
+    This years the efforts in marketing have increased.
+
+    Check the contents of the file management:
+    ------------------------------------------
+    [gmshaik@localhost ~]$ cat salesreport 
+    This file contains the sales report for the month of may.
+    This years the efforts in marketing have increased.
+
+    To merge the contents of two files into a third file:
+    -----------------------------------------------------
+    [gmshaik@localhost ~]$ cat salesreport mkrtreport >> completereport
+
+    Creating a 0 byte file using touch command:
+    -------------------------------------------
+    [gmshaik@localhost ~]$ touch file1
+    [gmshaik@localhost ~]$ ls -ld file1
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan 17 23:10 file1
+
+    Creating multiple 0 byte files using touch command:
+    ---------------------------------------------------
+    [gmshaik@localhost ~]$ touch file2 file3 file4
+    [gmshaik@localhost ~]$ ls -ld file*
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan 17 23:10 file1
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan 17 23:12 file2
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan 17 23:12 file3
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan 17 23:12 file4
+
+Changing the timestamp(date and time of timestamp) of a file or directory:
+--------------------------------------------------------------------------
+Syntax: touch <option><arguments><file or directory name>
+
+    To change the current Date and Time:
+    ------------------------------------
+    Syntax: touch -t YYYYMMDDhhmm <file or directory name>
+    
+    [gmshaik@localhost ~]$ ls -ld file1
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan 17 23:10 file1
+    
+    [gmshaik@localhost ~]$ touch -t 202001011632 file1
+    [gmshaik@localhost ~]$ ls -ld file1
+    -rw-rw-r--. 1 gmshaik gmshaik 0 Jan  1 16:32 file1
+
+
+Creating a directory:
+---------------------
+Syntax: mkdir <option><directory name>
+
+    Creating a single directory:
+    ----------------------------
+    [gmshaik@localhost ~]$ mkdir dir1
+    [gmshaik@localhost ~]$ ls -ld dir1
+    drwxrwxr-x. 2 gmshaik gmshaik 6 Jan 17 23:21 dir1
+
+    Creating multiple directories:
+    ------------------------------
+    [gmshaik@localhost ~]$ mkdir dir2 dir3 dir4
+    [gmshaik@localhost ~]$ ls -ld dir*
+    drwxrwxr-x. 2 gmshaik gmshaik 6 Jan 17 23:21 dir1
+    drwxrwxr-x. 2 gmshaik gmshaik 6 Jan 17 23:22 dir2
+    drwxrwxr-x. 2 gmshaik gmshaik 6 Jan 17 23:22 dir3
+    drwxrwxr-x. 2 gmshaik gmshaik 6 Jan 17 23:22 dir4
+
+    Creating nested directories(sub directory inside directory):
+    ------------------------------------------------------------
+    [gmshaik@localhost ~]$ mkdir -p d1/d2/d3/d4
+    [gmshaik@localhost ~]$ ls -R d1
+    d1:
+    d2
+
+    d1/d2:
+    d3
+
+    d1/d2/d3:
+    d4
+
+    d1/d2/d3/d4:
+
+
+Navigating through directories:
+-------------------------------
+Syntax: cd <argument>
+    To go into a directory:
+    -----------------------
+    [gmshaik@localhost ~]$ cd d1
+    [gmshaik@localhost d1]$ cd d2
+    [gmshaik@localhost d2]$ 
+
+    To go back one level, type cd press spacebar then dot dot
+    ---------------------------------------------------------
+    [gmshaik@localhost d2]$ cd ..
+    [gmshaik@localhost d1]$ 
+    
+    To go back two levels:
+    ----------------------
+    [gmshaik@localhost d1]$ cd ../..
+    [gmshaik@localhost home]$ 
+    
+    To go to the previous working directory:
+    ----------------------------------------
+    [gmshaik@localhost home]$ cd -
+    /home/gmshaik/d1
+
+    To go to current logged in user's home directory:
+    -------------------------------------------------
+    [gmshaik@localhost d1]$ cd
+    [gmshaik@localhost ~]$ pwd
+    /home/gmshaik
