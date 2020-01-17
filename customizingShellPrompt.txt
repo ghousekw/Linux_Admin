@@ -1,0 +1,41 @@
+Customizing the Shell prompt:
+-----------------------------
+. Use an environment variable to customize.
+. Bash, ksh, and sh use $PS1.
+. Csh, tcsh and zsh use $prompt.
+
+Customizing the prompt with PS1:
+--------------------------------
+\d  Date in "Weekday Month Date" format "Tue May 26".
+\h  Hostname up to the first period.
+\H  Hostname
+\n  newline
+\t  Current time in 24-Hour HH:MM:SS format.
+\T  Current time in 12-hour HH:MM:SS format.
+\@  Current time in 12-hour am/pm format.
+\A  Current time in 24-hour am/pm format.
+\w  Current working directory.
+\W  Basename of the Current working directory.
+\$  if the effective UID is 0, a #, otherwise a $
+
+Persist PS1 Changes:
+--------------------
+$ echo 'export PS1= "[\u@\h \w]\$ "' >> ~/.bash_profile
+
+sample:
+    PS1="\T\n[\h \w]\$ "
+    03:53:11
+    [gmshaik-virtual-machine ~/Desktop/Linux_Admin]$ 
+sample:
+    echo $PS1
+    \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+sample:
+    PS1="\u@\h \$"
+    gmshaik@gmshaik-virtual-machine $
+
+To save custom prompt
+    open .bash_profile
+    edit file and type
+        export PS1 = "[\u@\h \w]\$ "
+    :wq
+    
