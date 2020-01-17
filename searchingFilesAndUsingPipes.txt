@@ -1,0 +1,96 @@
+The grep command:
+-----------------
+grep    -   Display lines matching a pattern.
+
+grep pattern file
+
+grep Options:
+    . i - perform a search, ignoring a case.
+    . c - count the number of occurences in a file.
+    . n - preceed output with line numbers.
+    . v - invert match, print lines that don't match.
+
+sample: search a user in file secret.
+    $ grep user secret
+        user : jason
+sample: search 'o' matching name in file secret.
+    $ grep o secret
+        site : facebook.com
+        user : jason
+sample: inverting a match that doesn't contain letter 'o' in file secret.
+    $ grep -v o secret
+        tags : credentials
+        pass : Abee!
+        tags : credentials
+        new last line
+sample: search and matching a line by ignoring cases.
+    $ grep -i USER secret
+        user : jason
+sample: search and matching a line by ignoring cases and also counting number of occurences.
+    $ grep -ci USER secret
+sample: search and matching a line by ignoring cases with line number.
+    $ grep -ni USER secret
+        3:user : jason
+
+The file command:
+-----------------
+file file_name - Display the file type.
+
+sample: checking the file type by using file command
+        $ file sales.data
+            sales.data: ASCII text
+        $ file * 
+            bin: directory 
+            jason.tar: POSIX tar archive
+
+Searching for Text in Binary Files:
+-----------------------------------
+strings -   Display printable strings.
+
+Pipes:
+------
+|   Pipe symbol
+
+command-output  |   command-intput
+
+grep pattern file 
+
+cat file | grep pattern
+
+The cut command:
+----------------
+cut [file]  -   Cut out selected portions of file. If file is omitted, use standard intput.
+
+cut Options:
+    . d delimeter - use delimeter as the field seperator.
+    . f N   -   Display the Nth field.
+
+sample: searching for a string gorgeous and splitting the string using cut command and display the          2nd word
+        
+        strings Taylor\ Swift\ -\ Gorgeous.mp3 | grep -i gorgeous | cut -d' ' -f2
+        swift
+sample:Searching for lame word in mp3 file.
+        grep -i lame Taylor\ Swift\ -\ Gorgeous.mp3
+            Binary file Taylor Swift - Gorgeous.mp3 matches
+
+Searching and Pipe Example:
+---------------------------
+. Find all users named "bob" in /etc/passwd.
+. Print account name and real name.
+. Print in alphabetical order by account name.
+. Print in tabular format.
+    grep bob /etc/passwd | cut -d: -f1,5 | sort | tr ":" " " | column -t
+        
+        grep bob /etc/passwd: means search for bob in /etc/passwd
+        cut -d: -f1,5: means cutting only field1 and field5.
+        sort         : means sorting the result.
+        tr           : means trimming the semicolon(:) and replacing with space(" ").
+        column -t    : means display output in tabular format.
+
+Piping output to a pager:
+-------------------------
+. more
+. less  
+
+sample:
+    cat /etc/passwd | less      (or)        less /etc/passwd
