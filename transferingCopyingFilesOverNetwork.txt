@@ -1,0 +1,50 @@
+Copying Files over the Network:
+-------------------------------
+SCP  -   Secure copy
+SFTP -   SSH file trasfer protocol
+
+Command Line SCP Clients:
+-------------------------
+. scp
+. sftp
+. PuTTY Secure Copy client - pscp.exe
+. PuTTY Secure File Transfer client - psftp.exe
+
+Graphical SCP/SFTP Clients:
+---------------------------
+. Cyberduck
+. FileZilla
+. WinSCP
+
+scp/sftp Command line utilities:
+--------------------------------
+scp source destination
+    Copy Source destination.
+sample:
+    scp z.txt linuxsvr:/tmp/
+        means copying a source file from local directory to remote directory
+    ssh linuxsvr
+    ls /tmp/
+        z.txt
+sample:
+    scp z.txt adminuser@linuxsvr:/home/adminuser/
+        means copying a source file from local directory to remote directory as adminuser
+sftp host
+    Start a secure file transfer session with host.
+sample:    
+    sftp jason@host
+    sftp> ls
+    sftp> lpwd
+    sftp> lls - list files on local server
+    sftp> put z.txt 
+            uploading file to remote server home directory.
+    sftp> rm z.txt
+            remove a file from remote server
+    sftp> quit
+            to exit from remote server client.
+
+ftp Command line utility:
+-------------------------
+ftp host
+    Start a file transfer session with host.
+
