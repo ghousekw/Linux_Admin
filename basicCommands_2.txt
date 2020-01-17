@@ -1,0 +1,178 @@
+Copying a file:
+---------------
+Syntax: cp <option> <source> <destination>
+    To copy a file:
+    ---------------
+    [gmshaik@localhost Linux_Admin]$ cp file1 dir1/
+    
+    To check if the file has been copied:
+    -------------------------------------
+    [gmshaik@localhost Linux_Admin]$ ls dir1/file1 
+    dir1/file1
+
+Copying a directory:
+--------------------
+    To copy a directory:
+    --------------------
+    [gmshaik@localhost Linux_Admin]$ cp -r dir2/ dir1/
+    
+    To check if the directory has been copied:
+    ------------------------------------------
+    [gmshaik@localhost Linux_Admin]$ ls dir1
+    dir2  file1
+
+Moving a file:
+--------------
+Syntax: mv <option> <source> <destination>
+    To move a file:
+    ---------------
+    [gmshaik@localhost Linux_Admin]$ mv file1 dir1/
+
+    To check if the file has been moved:
+    ------------------------------------
+    [gmshaik@localhost Linux_Admin]$ ls
+    basicCommands_1.txt  customizingShellPrompt.txt shellAliases.txt
+    basicCommands_2.txt  dir1   dir2
+
+Moving a directory:
+-------------------
+    To move a directory:
+    --------------------
+    [gmshaik@localhost Linux_Admin]$ mv dir2/ dir1/
+
+    To check if the directory has been moved:
+    -----------------------------------------
+    [gmshaik@localhost Linux_Admin]$ ls
+    basicCommands_1.txt  customizingShellPrompt.txt  inputOuputRedirection.txt        transferingCopyingFilesOverNetwork.txt
+    basicCommands_2.txt  dir1  
+
+Renaming Files and Directories:
+-------------------------------
+Syntax: mv <oldname> <newname>
+    To rename a file:
+    -----------------
+    [gmshaik@localhost dir1]$ mv file1 report1
+
+    To check if the file has been renamed:
+    --------------------------------------
+    [gmshaik@localhost dir1]$ ls
+    dir2  report1
+
+Deleting an empty directory:
+----------------------------
+Syntax: rmdir <directory name>
+    To delete an empty directory:
+    -----------------------------
+    [gmshaik@localhost dir1]$ rmdir dir2/
+    To check if the file has been deleted:
+    --------------------------------------
+    [gmshaik@localhost dir1]$ ls
+    report1
+    
+Deleting files and directories:
+-------------------------------
+Syntax: rm <option> <file or directory name>
+
+Options:
+    r - recursive
+    f - forcefully
+
+    To delete a file:
+    -----------------
+    [gmshaik@localhost dir1]$ rm report1
+
+    To check if the file has been deleted:
+    --------------------------------------
+    [gmshaik@localhost dir1]$ ls
+    
+    To delete a directory
+    ---------------------
+    [gmshaik@localhost dir1]$ rm -rf dir1/
+
+    To check if the directory has been deleted:
+    -------------------------------------------
+    [gmshaik@localhost dir1]$ ls
+
+To View the System date and time:
+---------------------------------
+[gmshaik@localhost Linux_Admin]$ date
+Sat Jan 18 00:36:24 IST 2020
+
+To change the System date and time:
+-----------------------------------
+[gmshaik@localhost Linux_Admin]$ date --s "01/01/2020 00:06:00"
+
+To view calendar:
+-----------------
+    To view the current month:
+    --------------------------
+    [gmshaik@localhost Linux_Admin]$ cal
+    
+    To see past, current and next month:
+    ------------------------------------
+    [gmshaik@localhost Linux_Admin]$ cal -3
+
+    To see the calendar of the current year:
+    ----------------------------------------
+    [gmshaik@localhost Linux_Admin]$ cal -y
+
+    To see the calendar for the month of December for the year 2020:
+    ----------------------------------------------------------------
+    [gmshaik@localhost Linux_Admin]$ cal 12 2020
+    
+    To see calendar for full year:
+    ------------------------------
+    [gmshaik@localhost Linux_Admin]$ cal 2020
+
+To view help for a command(manual pages):
+-----------------------------------------
+Syntax: man mkdir
+    To see the help for the command mkdir:
+    --------------------------------------
+    man mkdir
+    To see content screen wise:
+    ---------------------------
+    [gmshaik@localhost Linux_Admin]$ less wildcards.txt    
+
+To view the top 10 lines of a file:
+-----------------------------------
+    Wildcards:
+        - A character or string used for pattern matching.
+        - Globbing expands the Wildcards pattern into a list of files and/or directories.(paths)
+        - Wildcards can be used with most commands.
+            . ls
+            . rm 
+            . cp
+        * - Matches zero or more characters
+            . *.txt
+            . a*
+
+To view the top 5 lines of a file:
+----------------------------------
+[gmshaik@localhost Linux_Admin]$ head -5 wildcards.txt 
+    Wildcards:
+        - A character or string used for pattern matching.
+        - Globbing expands the Wildcards pattern into a list of files and/or directories.(paths)
+        - Wildcards can be used with most commands.
+            . ls
+
+To view the bottom 10 lines of a file:
+--------------------------------------
+    - Matches any lower case letters.
+        . [[:space:]]
+            - Matches any space characters like tab, newline, space and so.
+        . [[:upper:]]
+            - Matches only lower case letters.
+    Matching Wildcards pattern:
+        . \ - escape character. Use if you want to match a wildcard character.
+            . Matches all files that end with a question mark:
+                . *\?
+                    - done?
+To view the top 3 lines of a file:
+----------------------------------
+[gmshaik@localhost Linux_Admin]$ tail -3 wildcards.txt 
+    . Matches all files that end with a question mark:
+        . *\?
+            - done?
+
+
