@@ -1,0 +1,123 @@
+Listing Process and Information:
+--------------------------------
+ps  -   Display process status
+
+Options:
+-e              Everything, all process.
+-f              Full format listing.
+-u username     Display username's process.
+-p pid          Display Information for PID.
+
+Common ps commands:
+-------------------
+ps -e          Display all process.
+ps -ef         Display all process, full.
+ps -eH         Display a process tree.
+ps -e --forest Display a process tree.
+ps -u username Display user's process.
+
+Other ways to view process:
+---------------------------
+pstree  Display processes in a tree format.
+top     Interactive process viewer.
+htop    Interactive process viewer.
+
+Sample: to get list of process.
+    [gmshaik@localhost ~]$ ps
+    PID TTY          TIME CMD
+    28129 pts/0    00:00:00 bash
+    54675 pts/0    00:00:00 bash
+    60793 pts/0    00:00:00 bash
+    62853 pts/0    00:00:00 ps
+
+Sample: to list specific process.
+    [gmshaik@localhost ~]$ ps -p 28129
+    PID TTY          TIME CMD
+    28129 pts/0    00:00:00 bash
+
+Sample: to get full format listing.
+    [gmshaik@localhost ~]$ ps -f
+    UID         PID   PPID  C STIME TTY          TIME CMD
+    gmshaik   28129  28121  0 09:04 pts/0    00:00:00 bash
+    gmshaik   54675  54674  0 10:30 pts/0    00:00:00 bash
+    gmshaik   60793  60792  0 14:48 pts/0    00:00:00 bash
+    gmshaik   62990  60793  0 16:06 pts/0    00:00:00 ps -f
+
+Sample: to list all process
+    [gmshaik@localhost ~]$ ps -e
+
+Sample: to get full listing of process
+    [gmshaik@localhost ~]$ ps -ef
+
+Sample: to list all process of specific user
+    [gmshaik@localhost ~]$ ps -fu gmshaik
+
+Sample: to list all process of root user
+    [gmshaik@localhost ~]$ ps -fu root
+
+Sample: to check which process uses more resources:
+    [gmshaik@localhost ~]$ top
+
+Sample: list process in tree format
+    [gmshaik@localhost ~]$ pstree
+
+Background and Foreground processes:
+------------------------------------
+command &   Start command in Background.
+Ctrl-c      Kill the foreground process.
+Ctrl-z      Suspend the foreground process.
+bg [%num]   Background a Suspend process.
+fg [%num]   Foreground a Background process.
+Kill        Kill a process by job number or PID.
+jobs [%num] List jobs.
+
+Killing Process:
+----------------
+ctrl-c          kills the foreground process.
+kill [-sig] pid Send a signal to a process.
+kill -l         Display a list of signals.
+
+Samples:
+    kill 123
+    kill -15 123
+    kill -TERM 123  kill -9 123
+
+Sample: Listing a job.
+    [gmshaik@localhost ~]$ jobs
+    [1]     Running     ./long-running-program
+    [2]     Running     ./long-running-program
+    [3]-    Running     ./long-running-program
+    [4]+    Running     ./long-running-program
+
++ represents current job.
+- represents previous job.
+
+%%(or)%+ represents current job.
+%-  represents previous job.
+
+Sample: Bringing a background process to foreground and killing it.
+    [gmshaik@localhost ~]$ fg %2
+    ./long-running-program
+    ^C
+
+    [gmshaik@localhost ~]$ jobs
+    [1]     Running     ./long-running-program
+    [3]-    Running     ./long-running-program
+    [4]+    Running     ./long-running-program
+
+Sample: stopping a foreground job.
+    [gmshaik@localhost ~]$ fg 1
+    ./long-running-program
+    ^Z
+    [1]+    stopped     ./long-running-program
+    [gmshaik@localhost ~]$ jobs
+    [1]     Running     ./long-running-program
+    [3]-    Running     ./long-running-program
+    [4]+    Running     ./long-running-program
+
+Sample: killing a job
+    [gmshaik@localhost ~]$ kill %1
+    [1]    Terminated     ./long-running-program
+
+    [gmshaik@localhost ~]$ kill 2394
+    [2]    Terminated     ./long-running-program
