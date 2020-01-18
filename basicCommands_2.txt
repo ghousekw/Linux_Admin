@@ -136,6 +136,7 @@ Syntax: man mkdir
 
 To view the top 10 lines of a file:
 -----------------------------------
+[gmshaik@localhost Linux_Admin]$ head wildcards.txt 
     Wildcards:
         - A character or string used for pattern matching.
         - Globbing expands the Wildcards pattern into a list of files and/or directories.(paths)
