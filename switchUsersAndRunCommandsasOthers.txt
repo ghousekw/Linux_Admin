@@ -1,0 +1,90 @@
+The SU Command:
+---------------
+su [username]   Change user ID or become superuser
+
+Options:
+
+-           A hyphen is used to provide an environment similar to what the user would expect had the user logged in directly.
+-c command  Specify a command to be executed.
+
+Who am i?
+---------
+whoami  Displays the effective username.
+
+whoami Example:
+---------------
+$ whoami
+gmshaik
+
+$ su oracle
+Password:
+
+$whoami
+oracle
+
+Sample: add user oracle
+    [gmshaik@localhost Linux_Admin]$ sudo useradd oracle
+    [sudo] password for gmshaik:
+
+Sample: set password to oracle user
+    [gmshaik@localhost Linux_Admin]$ sudo passwd oracle
+    Changing password for user oracle.
+    New password: 
+    BAD PASSWORD: The password is shorter than 8 characters
+    Retype new password: 
+    passwd: all authentication tokens updated successfully.
+
+Sample: switching to user oracle
+    [gmshaik@localhost Linux_Admin]$ su oracle
+    Password: 
+    [oracle@localhost Linux_Admin]$ whoami
+    oracle
+    [oracle@localhost Linux_Admin]$ tail -5 /etc/passwd
+    ram:x:2003:2003::/salesdept/ram:/bin/bash
+    kiran:x:2004:2004::/root/salesdept/:/bin/bash
+    jack:x:2005:2005::/home/jack:/bin/csh
+    abdul:x:800:2006:mktg:/mktg:/bin/csh
+    oracle:x:2006:2007::/home/oracle:/bin/bash
+
+    [oracle@localhost Linux_Admin]$ su - oracle
+    Password: 
+    Last login: Sat Jan 18 21:53:12 IST 2020 on pts/0
+
+
+    [oracle@localhost ~]$ pwd
+    /home/oracle
+    [oracle@localhost ~]$ exit
+    logout
+
+Sample: print oracle home directory.
+    [gmshaik@localhost Linux_Admin]$ su -c 'echo $ORACLE_HOME' oracle
+    Password: 
+
+Sudo - Super User Do:
+---------------------
+sudo    Execute a command as another user, typically the superuser.
+
+Using sudo:
+-----------
+sudo -l                 List available commands.
+sudo command            Run command as root.
+sudo -u root command    same as above.
+sudo -u user command    Run as user.
+sudo su                 Switch to superuser account.
+sudo su -               Switch to superuser account with root environment.
+sudo su - username      Switch to the username account.
+sudo -s                 Start a shell.
+sudo -u root -s         Same as sudo -s
+sudo -u user -s         Start a shell as user.
+
+Changing the sudo configuration:
+--------------------------------
+visudo  Edit the /etc/sudoers file
+
+Sudoers Format:
+---------------
+user host=(users)[NOPASSWD:]commands
+
+adminuser ALL=(ALL)NOPASSWD:ALL
+gmshaik localhost=(root) /etc/init.d/oracle
+
